@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Search, MapPin, Calendar, Star, Heart, MessageCircle, Filter, Clock, TrendingUp, Users } from 'lucide-react';
+import { Search, MapPin, Calendar, Star, Heart, MessageCircle, Filter, Clock, TrendingUp, Users, Scissors } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
