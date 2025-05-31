@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Search, Star, MapPin, Calendar, Scissors, Users, Heart, MessageCircle, Camera } from 'lucide-react';
 import { Button } from '@/components/ui/button';

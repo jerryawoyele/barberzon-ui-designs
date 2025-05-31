@@ -4,9 +4,14 @@ import { Search, Menu, User, Calendar, Heart, MessageCircle } from 'lucide-react
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const location = useLocation();
+  
+  // Simple check to see if we're on the authenticated home page
+  const isAuthenticated = location.pathname === '/home';
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-xl">
@@ -16,7 +21,9 @@ const Header = () => {
           <div className="w-8 h-8 bg-gradient-to-br from-gold-400 to-gold-600 rounded-lg flex items-center justify-center">
             <span className="text-black font-bold text-sm">B</span>
           </div>
-          <span className="text-xl font-bold gradient-text">BarberZon</span>
+          <a href={isAuthenticated ? "/home" : "/"} className="text-xl font-bold gradient-text">
+            BarberZon
+          </a>
         </div>
 
         {/* Search Bar - Desktop */}
@@ -34,22 +41,47 @@ const Header = () => {
 
         {/* Navigation - Desktop */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            <Calendar className="h-4 w-4 mr-2" />
-            Book Now
-          </Button>
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            <Heart className="h-4 w-4 mr-2" />
-            Favorites
-          </Button>
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            <MessageCircle className="h-4 w-4 mr-2" />
-            Messages
-          </Button>
-          <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-            <User className="h-4 w-4 mr-2" />
-            Sign In
-          </Button>
+          {isAuthenticated ? (
+            <>
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                <Calendar className="h-4 w-4 mr-2" />
+                Book Now
+              </Button>
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                <Heart className="h-4 w-4 mr-2" />
+                Favorites
+              </Button>
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                <MessageCircle className="h-4 w-4 mr-2" />
+                Messages
+              </Button>
+              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <User className="h-4 w-4 mr-2" />
+                Profile
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                <Calendar className="h-4 w-4 mr-2" />
+                Book Now
+              </Button>
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                <Heart className="h-4 w-4 mr-2" />
+                Favorites
+              </Button>
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                <MessageCircle className="h-4 w-4 mr-2" />
+                Messages
+              </Button>
+              <a href="/auth">
+                <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <User className="h-4 w-4 mr-2" />
+                  Sign In
+                </Button>
+              </a>
+            </>
+          )}
         </nav>
 
         {/* Mobile Menu */}
@@ -89,12 +121,22 @@ const Header = () => {
               </nav>
               
               <div className="space-y-3 pt-6 border-t border-border">
-                <Button className="w-full bg-primary text-primary-foreground">
-                  Sign In
-                </Button>
-                <Button variant="outline" className="w-full">
-                  Join as Barber
-                </Button>
+                {isAuthenticated ? (
+                  <Button className="w-full bg-primary text-primary-foreground">
+                    View Profile
+                  </Button>
+                ) : (
+                  <>
+                    <a href="/auth">
+                      <Button className="w-full bg-primary text-primary-foreground">
+                        Sign In
+                      </Button>
+                    </a>
+                    <Button variant="outline" className="w-full">
+                      Join as Barber
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </SheetContent>
