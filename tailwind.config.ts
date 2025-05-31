@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -169,8 +168,8 @@ export default {
 				'float': 'float 6s ease-in-out infinite'
 			},
 			fontFamily: {
-				'display': ['Orbitron', 'monospace'],
-				'body': ['Rubik', 'system-ui', 'sans-serif'],
+				'display': ['Rubik', 'system-ui', 'sans-serif'],
+				'body': ['Roboto', 'system-ui', 'sans-serif'],
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
