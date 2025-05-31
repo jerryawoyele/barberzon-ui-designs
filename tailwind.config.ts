@@ -150,8 +150,8 @@ export default {
 				'shimmer': 'shimmer 2s infinite'
 			},
 			fontFamily: {
-				'display': ['Inter', 'system-ui', 'sans-serif'],
-				'body': ['Inter', 'system-ui', 'sans-serif'],
+				'display': ['Roboto', 'system-ui', 'sans-serif'],
+				'body': ['Roboto', 'system-ui', 'sans-serif'],
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

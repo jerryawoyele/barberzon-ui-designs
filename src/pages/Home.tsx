@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Search, MapPin, Calendar, Star, Heart, MessageCircle, Filter, Clock, TrendingUp, Users, Scissors } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -113,28 +112,26 @@ const Home = () => {
         {/* Quick Search */}
         <Card className="mb-8 bg-gradient-to-r from-primary/5 to-gold-400/5 border-primary/20">
           <CardContent className="p-6">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex-1">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
-                  <Input
-                    placeholder="Search for barbers, services, or styles..."
-                    className="pl-12 h-12 text-lg bg-background/80"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                </div>
+            <div className="space-y-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+                <Input
+                  placeholder="Search for barbers, services, or styles..."
+                  className="pl-12 h-12 text-lg bg-background/80"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
               </div>
-              <div className="flex gap-3">
-                <Button variant="outline" size="lg" className="flex items-center gap-2">
+              <div className="flex flex-wrap gap-3">
+                <Button variant="outline" className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  Near me
+                  <span className="hidden sm:inline">Near me</span>
                 </Button>
-                <Button variant="outline" size="lg" className="flex items-center gap-2">
+                <Button variant="outline" className="flex items-center gap-2">
                   <Filter className="h-4 w-4" />
-                  Filters
+                  <span className="hidden sm:inline">Filters</span>
                 </Button>
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Button className="bg-primary text-primary-foreground hover:bg-primary/90 flex-1 sm:flex-none">
                   Search
                 </Button>
               </div>
